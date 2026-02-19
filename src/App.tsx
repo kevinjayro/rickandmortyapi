@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
-interface Character {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-}
+import List from "./List";
+import type { Character } from "./types";
 
 function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -36,22 +32,7 @@ function App() {
   return (
     <div>
       <h1>Rick and Morty Characters</h1>
-
-      <ul>
-      {characters.map((character) => (
-        <li key={character.id}>
-          <div>
-            <strong>Name:</strong> {character.name}
-          </div>
-          <div>
-            <strong>Status:</strong> {character.status}
-          </div>
-          <div>
-            <strong>Species:</strong> {character.species}
-          </div>
-        </li>
-      ))}
-    </ul>
+      <List characters={characters} />
     </div>
   );
 }
