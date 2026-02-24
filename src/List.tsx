@@ -1,6 +1,6 @@
-import type { Character } from "./types";
-import Button from "./Button";
-import { FaEye, FaPen, FaTrash } from "react-icons/fa";
+import type { Character } from './types';
+import Button from './Button';
+import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
 interface ListProps {
   characters: Character[];
 }
@@ -23,9 +23,9 @@ const List = ({ characters }: ListProps) => {
           <span>{character.status}</span>
           <span>{character.species}</span>
           <div style={actions}>
-            <Button colorVariant="view" icon={<FaEye />} />
-            <Button colorVariant="edit" icon={<FaPen />} />
-            <Button colorVariant="delete" icon={<FaTrash />} />
+            <Button colorVariant='view' icon={<FaEye />} />
+            <Button colorVariant='edit' icon={<FaPen />} />
+            <Button colorVariant='delete' icon={<FaTrash />} />
           </div>
         </div>
       ))}
@@ -57,10 +57,9 @@ const styles = {
   },
 
   actions: {
-    display: "flex",
-    gap: "8px",
+    display: 'flex',
+    gap: '8px',
   },
 };
-
 
 export default List;

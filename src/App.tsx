@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import List from "./List";
-import type { Character } from "./types";
+import { useEffect, useState } from 'react';
+import List from './List';
+import type { Character } from './types';
 
 function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -18,11 +18,11 @@ function App() {
 
         const data = await response.json();
 
-        console.log("API:", data.results);
+        console.log('API:', data.results);
 
         setCharacters(data.results);
       } catch (error) {
-        console.error("Error:", error);
+        console.error('Error:', error);
       }
     };
 
