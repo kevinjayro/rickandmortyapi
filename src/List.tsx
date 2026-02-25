@@ -3,13 +3,14 @@ import Button from './Button';
 import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
 interface ListProps {
   characters: Character[];
+  onView: (character: Character) => void;
 }
 
-const List = ({ characters }: ListProps) => {
-  const { container, header, row, actions } = styles;
+const List = ({ characters, onView }: ListProps) => {
+  const { header, row, actions } = styles;
 
   return (
-    <div style={container}>
+    <>
       <div style={header}>
         <span>Name</span>
         <span>Status</span>
@@ -23,20 +24,17 @@ const List = ({ characters }: ListProps) => {
           <span>{character.status}</span>
           <span>{character.species}</span>
           <div style={actions}>
-            <Button colorVariant='view' icon={<FaEye />} />
+            <Button colorVariant='view' icon={<FaEye />} onClick={() => onView(character)} />
             <Button colorVariant='edit' icon={<FaPen />} />
             <Button colorVariant='delete' icon={<FaTrash />} />
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
 const styles = {
-  container: {
-    maxWidth: '70%'
-  },
 
   header: {
     display: 'grid',
