@@ -6,6 +6,7 @@ import type { Character } from './types';
 function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -31,28 +32,34 @@ function App() {
     fetchCharacters();
   }, []);
 
+  const characterSelected = (character: Character) => {
+    setSelectedCharacter(character);
+    setIsDetailsOpen(true);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedCharacter(null);
+    setIsDetailsOpen(false);
+  };
   return (
     <div style={{ width: '100%' }}>
       <h1>Rick and Morty Characters</h1>
 
       <div style={{ display: 'flex' }}>
-
         <div style={{ width: '70%' }}>
           <List
             characters={characters}
-            onView={setSelectedCharacter}
+            onView={characterSelected}
           />
         </div>
-
         <div style={{ width: '30%' }}>
-          {selectedCharacter && (
+          {isDetailsOpen && selectedCharacter && (
             <Details
               character={selectedCharacter}
-              onClose={() => setSelectedCharacter(null)}
+              onClose={handleCloseDetails}
             />
           )}
         </div>
-
       </div>
     </div>
   );
