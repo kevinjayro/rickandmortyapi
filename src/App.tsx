@@ -41,6 +41,17 @@ function App() {
     setSelectedCharacter(null);
     setIsDetailsOpen(false);
   };
+
+  const handleDelete = (id: number) => {
+    setCharacters(prev =>
+      prev.filter(character => character.id !== id)
+    );
+
+    if (selectedCharacter?.id === id) {
+      setSelectedCharacter(null);
+      setIsDetailsOpen(false);
+    }
+  };
   return (
     <div style={{ width: '100%' }}>
       <h1>Rick and Morty Characters</h1>
@@ -50,6 +61,7 @@ function App() {
           <List
             characters={characters}
             onView={characterSelected}
+            onDelete={handleDelete}
           />
         </div>
         <div style={{ width: '30%' }}>

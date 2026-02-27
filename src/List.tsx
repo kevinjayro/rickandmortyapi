@@ -4,11 +4,11 @@ import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
 interface ListProps {
   characters: Character[];
   onView: (character: Character) => void;
+  onDelete: (id: number) => void;
 }
 
-const List = ({ characters, onView }: ListProps) => {
+const List = ({ characters, onView, onDelete }: ListProps) => {
   const { header, row, actions } = styles;
-
   return (
     <>
       <div style={header}>
@@ -26,7 +26,7 @@ const List = ({ characters, onView }: ListProps) => {
           <div style={actions}>
             <Button colorVariant='view' icon={<FaEye />} onClick={() => onView(character)} />
             <Button colorVariant='edit' icon={<FaPen />} />
-            <Button colorVariant='delete' icon={<FaTrash />} />
+            <Button colorVariant='delete' icon={<FaTrash />} onClick={() => onDelete(character.id)} />
           </div>
         </div>
       ))}
@@ -35,7 +35,6 @@ const List = ({ characters, onView }: ListProps) => {
 };
 
 const styles = {
-
   header: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
@@ -45,7 +44,6 @@ const styles = {
     color: 'white',
     borderRadius: '6px 6px 0 0',
   },
-
   row: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
@@ -53,7 +51,6 @@ const styles = {
     borderBottom: '1px solid #ddd',
     backgroundColor: '#f9fafb',
   },
-
   actions: {
     display: 'flex',
     gap: '8px',
