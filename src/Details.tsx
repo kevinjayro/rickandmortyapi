@@ -8,18 +8,19 @@ interface DetailsProps {
 }
 
 const Details = ({ character, onClose }: DetailsProps) => {
+  const { header, list, buttonContainer } = styles;
   return (
     <>
-      <div style={styles.header}>
+      <div style={header}>
         <span>Character details</span>
       </div>
 
-      <ul style={styles.list}>
+      <ul style={list}>
         <li><strong>Name:</strong> {character.name}</li>
         <li><strong>Status:</strong> {character.status}</li>
         <li><strong>Species:</strong> {character.species}</li>
       </ul>
-      <div style={styles.buttonContainer}>
+      <div style={buttonContainer}>
         <Button colorVariant='close' icon={<FaTimes />} label='Close' onClick={onClose} />
       </div>
     </>
